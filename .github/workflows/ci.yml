@@ -10,5 +10,7 @@ jobs:
   prod-check:
     if: ${{ github.ref == 'refs/heads/cicd' }}
     runs-on: windows-latest
+    env:
+      ENV_NAME: ${{ fromJSON('{"main":"prod","dev":"sat"}')[github.ref_name] || github.ref_name }}
     steps:
-      - run: echo "Deploying to production server on branch $GITHUB_REF"
+      - run: echo "Deploying to production server on branch $ENV_NAME"
