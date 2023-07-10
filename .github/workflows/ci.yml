@@ -7,16 +7,8 @@ on:
     branches: [ cicd ]
 
 jobs:
-  build:
-
+  prod-check:
+    if: ${{ github.ref == 'refs/heads/cicd' }}
     runs-on: windows-latest
-    
     steps:
-    - name: Test
-      run: |
-        echo {{$github.head_ref}}
-      env:
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-        repository: ${{ github.repository }}
+      - run: echo "Deploying to production server on branch $GITHUB_REF"
