@@ -14,4 +14,4 @@ jobs:
       ENV_NAME: ${{ fromJSON('{"main":"prod","cicd":"sat"}')[github.ref_name] || github.ref_name }}
       TEST: "abcddads"
     steps:
-      - run: echo "${{github.ref_name}}"
+      - run: echo "${{env.ENV_NAME}}"
