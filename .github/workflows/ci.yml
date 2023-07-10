@@ -12,5 +12,6 @@ jobs:
     runs-on: windows-latest
     env:
       ENV_NAME: ${{ fromJSON('{"main":"prod","cicd":"sat"}')[github.ref_name] || github.ref_name }}
+      TEST: "abcddads"
     steps:
-      - run: echo "Deploying to production server on branch $ENV_NAME"
+      - run: echo "${{env.TEST}}"
