@@ -11,6 +11,6 @@ jobs:
     if: ${{ github.ref == 'refs/heads/cicd' }}
     runs-on: windows-latest
     env:
-      ENV_NAME: ${{ fromJSON('{"main":"prod","dev":"sat"}')[github.ref_name] || github.ref_name }}
+      ENV_NAME: ${{ fromJSON('{"main":"prod","cicd":"sat"}')[github.ref_name] || github.ref_name }}
     steps:
       - run: echo "Deploying to production server on branch $ENV_NAME"
