@@ -11,7 +11,6 @@ jobs:
     if: ${{ github.ref == 'refs/heads/cicd' }}
     runs-on: windows-latest
     env:
-      ENV_NAME: ${{ fromJSON('{"main":"prod","cicd":"sat"}')[github.ref_name] || github.ref_name }}
-      TEST: "abcddads"
+      ENV_NAME: ${{ fromJSON('{"main":"Master","cicd":"Temprory"}')[github.ref_name]}}
     steps:
-      - run: echo "${{env.ENV_NAME}}"
+      - run: echo "this is a ${{env.ENV_NAME}} branch"
